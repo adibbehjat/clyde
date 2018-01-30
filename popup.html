@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>This is a pointless title</title>
-        <!--<script type="text/javascript" src="content.js"></script>-->
+        <title>Ultimate Discord Extension</title>
+        <script type="text/javascript" src="popup.js"></script>
+        <style type="text/css">
+            body {
+                overflow: hidden;
+                margin: 0px;
+                padding: 5px;
+                background: white;
+                width: 400px;
+                height: 100px;
+            }
+
+            h2 {
+                line-height: 10px;
+            }
+
+            #imageInput {
+                width: 80%;
+            }
+
+        </style>
     </head>
-    <script>
-        function submit() {
-            chrome.storage.sync.set({'backgroundImage': "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)"});
-        };
-		var imageButton = document.getElementById("imageButton");
-    </script>
     <body>
         <h2>CLYDE</h2>
         <h4>Background Image</h4>
-        <input type="text" id="imageInput">
+        <input type="text" id="imageInput" placeholder="Please input a URL">
         <input type="button" id="imageButton" value="Set"/>
-        <script type="text/javascript" src="content.js"></script>
     </body>
 </html>
