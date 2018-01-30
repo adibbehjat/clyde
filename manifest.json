@@ -1,0 +1,23 @@
+{
+	"manifest_version": 2,
+ 
+	"name": "The Ultimate Discord Extension",
+	"version": "1.0.0",
+	"description": "New discord features.",
+  
+	"browser_action": {
+		"name": "The Ultimate Discord Extension",
+		"icons": [
+			"/icon128.png"
+		],
+		"default_icon": "/icon256.png",
+		"default_popup" : "popup.html"
+	},
+ 
+	"content_scripts": [{
+		"css": ["style.css"],
+		"js": ["content.js"],
+		"matches": ["https://discordapp.com/channels/*"]
+	}]
+ 
+}

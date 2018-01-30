@@ -1,0 +1,72 @@
+/* Make elements transparent */
+.guilds-wrapper, .app-XZYfmp, .app, .layer-kosS71, .layers-20RVFW, .container-2OU7Cz, .channels-3g2vYe, .container-RYiLUQ, .chat, .chat>.content, .messages-wrapper, .channel-members, .title-qAcLxz, #friends, .headerBar-cxbhPD, .friends-table, .ui-standard-sidebar-view, .content-region, .selectorSelected-2M0IGv {
+	background-color: rgba(0, 0, 0, 0.15) !important;
+}
+/* Needs to be darker for pinned messages tab. */
+.messages-popout-wrap {
+	background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.messages-popout-wrap {
+	background-color: rgba(0, 0, 0, 0.65) !important;
+}
+.header {
+	background-color: rgba(0, 0, 0, 0.60) !important;
+}
+.autocomplete-1TnWNR, .autocompleteInner-N7OQf1 {
+	background-color: rgba(20, 20, 20, 0.5) !important;
+}
+.chat form {
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+.sidebar-region {
+	background-color: rgba(0, 0, 0, 0.50) !important;
+}
+/* Is typing text transparent */
+.typing-3eiiL_ {
+	background-color: transparent !important;
+}
+/* Message Text Color */
+.comment .markup {
+	color: white !important;
+}
+/* Change Scrollbar Styling */
+.scroller.scrolling>*{
+	pointer-events:none
+}
+.scroller-wrap .scroller::-webkit-scrollbar {
+	width: 14px;
+}
+.scroller-wrap .scroller::-webkit-scrollbar-thumb, .scroller-wrap .scroller::-webkit-scrollbar-track-piece {
+	background-clip: padding-box;
+	background-color: rgba(20, 20, 20, 0.45) !important;
+	border: 3px solid rgba(47, 49, 54, 0.45) !important;
+	border-radius: 8px;
+}
+.scroller-wrap .scroller::-webkit-scrollbar-track-piece {
+	background-color: rgba(47, 49, 54, 0.45) !important;
+}
+.scroller-wrap.polyfill .scroller {
+	padding-right: 14px
+}
+.scroller-wrap .scrollbar {
+	background-color: rgba(47, 49, 54, 0.45) !important;
+	bottom: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;pointer-events:none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 14px
+}
+/* Member Hover */
+.member:hover {
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	background: rgba(0, 0, 0, 0.3) !important;
+}
+.status {
+    border-color: rgba(0, 0, 0, 0) !important;
+}
+.contentHoveredText-2HYGIY {
+	background-color: rgba(0, 0, 0, 0.4) !important;
+}
