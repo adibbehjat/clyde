@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>This is a pointless title</title>
-		<script type="text/javascript" src="content.js"></script>
-	</head>
-	<script>
-		function submit() {
-			chrome.storage.sync.set({'backgroundImage': "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)"});
-		};
-	</script>
-	<body>
-		<h2>CLYDE</h2>
-		<h4>Background Image</h4>
-		<input type="text" id="imageBck">
-		<input type="button" value="Set" onclick="runFile();"/>
-	</body>
+    <head>
+        <title>This is a pointless title</title>
+        <!--<script type="text/javascript" src="content.js"></script>-->
+    </head>
+    <script>
+        function submit() {
+            chrome.storage.sync.set({'backgroundImage': "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)"});
+        };
+		var imageButton = document.getElementById("imageButton");
+    </script>
+    <body>
+        <h2>CLYDE</h2>
+        <h4>Background Image</h4>
+        <input type="text" id="imageInput">
+        <input type="button" id="imageButton" value="Set"/>
+        <script type="text/javascript" src="content.js"></script>
+    </body>
 </html>
