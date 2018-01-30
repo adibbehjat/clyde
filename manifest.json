@@ -3,7 +3,7 @@
  
 	"name": "The Ultimate Discord Extension",
 	"version": "1.1.0",
-	"description": "Add your own backgroundto discord!",
+	"description": "Add your own background to discord!",
   
 	"browser_action": {
 		"name": "The Ultimate Discord Extension",
