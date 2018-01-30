@@ -13,6 +13,10 @@
 		"default_icon": "/icon256.png",
 		"default_popup" : "popup.html"
 	},
+
+	"permissions":[
+		"https://discordapp.com/channels/*"
+	],
  
 	"content_scripts": [{
 		"css": ["style.css"],

@@ -32,8 +32,11 @@ function changeImage() {
 	// Replace image
     bgImage = "url(" + imageInput.value + ")";
 
-    // Run function
-    replaceDiscordBackground(bgImage);
+    // Ask it to execute the code for the tab
+    chrome.tabs.executeScript(null,{code:"replaceDiscordBackground('"+bgImage+"')"});
+
+    // Close extension window
+    window.close();
 
 }
 
