@@ -30,7 +30,7 @@ function changeImage() {
     var imageInput = document.getElementById('imageInput');
     
     // Set Cookie
-    chrome.cookies.set("bgImage", "url(" + imageInput.value + ")");
+	chrome.cookies.set({"name":"bgImage","url":"https://discordapp.com","value":"url(" + imageInput.value + ")"});
 	// Replace image
     bgImage = chrome.cookies.get("bgImage");
 
@@ -45,10 +45,15 @@ function changeImage() {
 /* RUN JAVASCRIPTS COMMANDS FROM HERE */
 
 // Check and see if we have an existing cookie.
-var bgImage = "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)";
-if (chrome.cookies.get("bgImage")) {
-	bgImage = chrome.cookies.get("bgImage");
-}
+chrome.cookies.get({ url: 'https://discordapp.com', name: 'bgImage' },
+  function (cookie) {
+    if (cookie) {
+		var bgImage = cookie.value;
+    }
+    else {
+		var bgImage = "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)";
+    }
+});
 
 // Run the function the first time
 replaceDiscordBackground(bgImage);
@@ -60,5 +65,5 @@ document.addEventListener('DOMContentLoaded', function () {
 	var button = document.getElementById('imageButton');
 
 	// Attach event listener to button (of type "click", and route to function changeImage)
-	button.addEventListener('click',changeImage);
+	button.addEventListener('click', changeImage);
 });
