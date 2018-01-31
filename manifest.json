@@ -16,6 +16,7 @@
 
 	"permissions":[
 		"cookies",
+		"tabs",
 		"https://discordapp.com/channels/*"
 	],
  

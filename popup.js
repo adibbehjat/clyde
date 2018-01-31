@@ -26,11 +26,12 @@ function replaceDiscordBackground(bgImage){
 // When user sets a new background image
 function changeImage() {
 
-    // Collect impage input
+    // Collect image input
     var imageInput = document.getElementById('imageInput');
     
     // Set Cookie
-	chrome.cookies.set({"name":"bgImage","url":"https://discordapp.com","value":"url(" + imageInput.value + ")"});
+	chrome.cookies.set({"name":"discordExt_bgImage","url":"https://discordapp.com","value":"url(" + imageInput.value + ")"});
+
 	// Replace image
     bgImage = chrome.cookies.get("bgImage");
 
@@ -44,15 +45,25 @@ function changeImage() {
 
 /* RUN JAVASCRIPTS COMMANDS FROM HERE */
 
-// Check and see if we have an existing cookie.
-chrome.cookies.get({ url: 'https://discordapp.com', name: 'bgImage' },
-  function (cookie) {
-    if (cookie) {
-		var bgImage = cookie.value;
-    }
-    else {
-		var bgImage = "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)";
-    }
+// Set default value
+var bgImage = "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)";
+
+// Go through the select tab and return the tab ID and URL
+chrome.tabs.getSelected(null, function(tab) {
+
+
+    var tabID = tab.id;
+    var tabURL = tab.url;
+    
+    // Check and see if we have an existing cookie.
+    bgImage = chrome.cookies.get({ url: tabURL, name: 'bgImage' }, function (cookie) {
+        if (cookie) {
+            // Return value if cookie exists
+            return cookie.value;
+        }
+    });
+
+
 });
 
 // Run the function the first time
