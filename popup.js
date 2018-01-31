@@ -26,11 +26,13 @@ function replaceDiscordBackground(bgImage){
 // When user sets a new background image
 function changeImage() {
 
-	// Collect impage input
-	var imageInput = document.getElementById('imageInput');
-	
+    // Collect impage input
+    var imageInput = document.getElementById('imageInput');
+    
+    // Set Cookie
+    chrome.cookies.set("bgImage", "url(" + imageInput.value + ")");
 	// Replace image
-    bgImage = "url(" + imageInput.value + ")";
+    bgImage = chrome.cookies.get("bgImage");
 
     // Ask it to execute the code for the tab
     chrome.tabs.executeScript(null,{code:"replaceDiscordBackground('"+bgImage+"')"});
@@ -42,8 +44,11 @@ function changeImage() {
 
 /* RUN JAVASCRIPTS COMMANDS FROM HERE */
 
-// Test image
+// Check and see if we have an existing cookie.
 var bgImage = "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)";
+if (chrome.cookies.get("bgImage")) {
+	bgImage = chrome.cookies.get("bgImage");
+}
 
 // Run the function the first time
 replaceDiscordBackground(bgImage);
