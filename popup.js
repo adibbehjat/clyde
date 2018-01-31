@@ -30,7 +30,7 @@ function changeImage() {
     var imageInput = document.getElementById('imageInput');
     
     // Set Cookie
-	chrome.cookies.set({"name":"discordExt_bgImage","url":"https://discordapp.com","value":"url(" + imageInput.value + ")"});
+	chrome.cookies.set({"name":"discordExt_bgImage","url":"https://discordapp.com/channels/","value":"url(" + imageInput.value + ")"});
 
 	// Replace image
     bgImage = chrome.cookies.get("bgImage");
@@ -56,7 +56,7 @@ chrome.tabs.getSelected(null, function(tab) {
     var tabURL = tab.url;
     
     // Check and see if we have an existing cookie.
-    bgImage = chrome.cookies.get({ url: tabURL, name: 'bgImage' }, function (cookie) {
+    bgImage = chrome.cookies.get({ url: tabURL, name: 'discordExt_bgImage' }, function (cookie) {
         if (cookie) {
             // Return value if cookie exists
             return cookie.value;
