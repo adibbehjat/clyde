@@ -23,51 +23,69 @@ function replaceDiscordBackground(bgImage){
     }
 }
 
-// When user sets a new background image
-function changeImage() {
-
-    // Collect image input
-    var imageInput = document.getElementById('imageInput');
+// Change the image to a new one that the user provided
+function setImage(bgImage) {
     
     // Set Cookie
-	chrome.cookies.set({"name":"discordExt_bgImage","url":"https://discordapp.com/channels/","value":"url(" + imageInput.value + ")"});
+    chrome.cookies.set({name:bgExtCookie,url:"https://discordapp.com/channels/",value:"url(" + bgImage + ")"});
 
-	// Replace image
-    bgImage = chrome.cookies.get("bgImage");
-
-    // Ask it to execute the code for the tab
+    // Execute script
     chrome.tabs.executeScript(null,{code:"replaceDiscordBackground('"+bgImage+"')"});
-
-    // Close extension window
-    window.close();
-
 }
+
+function changeImage() {
+    return true;
+}
+
+// // Collect image input
+// var imageInput = document.getElementById('imageInput');
+
+// // Replace as needed
+// if(imageInput.value != "") {
+//     bgImage = imageInput;
+// }
 
 /* RUN JAVASCRIPTS COMMANDS FROM HERE */
 
-// Set default value
-var bgImage = "url(https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900)";
+// Set default values
+var bgExtCookie = "discordExt_bgImage";
 
-// Go through the select tab and return the tab ID and URL
-chrome.tabs.getSelected(null, function(tab) {
+// Set bgImage
+var bgImage = "https://lh5.ggpht.com/lmue-B8Wo2Sa05MlCF2cMFlYEOJPzZDfLkVg4Gzsgsbo5-MiSrj5nA0MER8HJkqXPl4=h900";
 
+try {
+    // See if there's already an image set
+    chrome.cookies.get({"url":"https://discordapp.com/channels/","name":bgExtCookie},
+        
+        // Function based on cookies returned
+        (cookie) => {
+            
+            // Did you find the cookie
+            if(cookie) {
+                
+                // Return bgImage
+                console.log(cookie.value);
 
-    var tabID = tab.id;
-    var tabURL = tab.url;
-    
-    // Check and see if we have an existing cookie.
-    bgImage = chrome.cookies.get({ url: tabURL, name: 'discordExt_bgImage' }, function (cookie) {
-        if (cookie) {
-            // Return value if cookie exists
-            return cookie.value;
-        }
-    });
+                // Collect cookie value
+                bgImage = cookie.value;
 
+                // Process image
+                chrome.tabs.executeScript(null,{code:"replaceDiscordBackground('"+bgImage+"')"});
+            
+            } else {
+                // If we couldn't find the cookie, then
+                // set image data to cookie
+                setImage(bgImage);
+            }
 
-});
+    }); // End of get cookies
+}
+catch (error) {
+    console.log(error);
+}
 
-// Run the function the first time
-replaceDiscordBackground(bgImage);
+// // Go through the tabs and return the tab ID and URL of all tabs that are discord
+// chrome.tabs.query({url:"https://discordapp.com/channels/*"},(sites) => {});
 
 // Add event listener to the button
 document.addEventListener('DOMContentLoaded', function () {

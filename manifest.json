@@ -14,15 +14,20 @@
 		"default_popup" : "popup.html"
 	},
 
+	"background": {
+		"scripts": ["background.js"]
+	},
+
 	"permissions":[
 		"cookies",
 		"tabs",
-		"https://discordapp.com/channels/*"
+		"webNavigation",
+		"https://discordapp.com/*"
 	],
  
 	"content_scripts": [{
 		"css": ["style.css"],
-		"js": ["popup.js"],
+		"js": ["popup.js", "background.js"],
 		"matches": ["https://discordapp.com/channels/*"]
 	}]
  
